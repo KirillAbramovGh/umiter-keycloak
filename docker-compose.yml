@@ -18,7 +18,7 @@ services:
       - /private/var/lib/postgresql:/var/lib/postgresql
 
   keycloak:
-    image: jboss/keycloak:16.1.1
+    image: jboss/keycloak:11.0.3
     container_name: keycloak
     environment:
       DB_VENDOR: POSTGRES
