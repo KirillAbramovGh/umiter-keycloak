@@ -26,8 +26,8 @@ services:
       DB_DATABASE: keycloak_db
       DB_USER: /run/secrets/pg_username
       DB_PASSWORD: /run/secrets/pg_password
-      KEYCLOAK_USER: /run/secrets/keycloak_username
-      KEYCLOAK_PASSWORD: /run/secrets/keycloak_password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
     ports:
       - "8484:8443"
     depends_on:
