@@ -3,7 +3,7 @@ version: "3.8"
 services:
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:11.22-bullseye
     environment:
       POSTGRES_USER: /run/secrets/pg_username
       POSTGRES_PASSWORD: /run/secrets/pg_password
@@ -14,9 +14,11 @@ services:
     secrets:
       - pg_username
       - pg_password
+    volumes:
+      - /private/var/lib/postgresql:/var/lib/postgresql
 
   keycloak:
-    image: jboss/keycloak
+    image: jboss/keycloak:16.1.1
     container_name: keycloak
     environment:
       DB_VENDOR: POSTGRES
@@ -27,7 +29,7 @@ services:
       KEYCLOAK_USER: /run/secrets/keycloak_username
       KEYCLOAK_PASSWORD: /run/secrets/keycloak_password
     ports:
-      - "8484:8080"
+      - "8484:8443"
     depends_on:
       - postgres
     links:
