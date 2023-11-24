@@ -18,7 +18,7 @@ services:
       - /private/var/lib/postgresql:/var/lib/postgresql
 
   keycloak:
-    image: jboss/keycloak:11.0.3
+    image: jboss/keycloak:16.1.1
     container_name: keycloak
     environment:
       DB_VENDOR: POSTGRES
@@ -26,8 +26,8 @@ services:
       DB_DATABASE: keycloak_db
       DB_USER: /run/secrets/pg_username
       DB_PASSWORD: /run/secrets/pg_password
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: password
+      KEYCLOAK_USER: /run/secrets/keycloak_username
+      KEYCLOAK_PASSWORD: /run/secrets/keycloak_password
     ports:
       - "8484:8443"
     depends_on:
